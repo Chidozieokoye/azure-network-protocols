@@ -129,7 +129,7 @@ From the Windows 10 virtual machine, I open PowerShell and use the nslookup comm
 </p>
 <br />
 
-10 <h2>From Windows 10 VM, Inside Wireshark, filter for RDP traffic (tcp.port == 3389) and observe the immediate non-stop spam of traffic.</h2>
+<h2>From Windows 10 VM, Inside Wireshark, filter for RDP traffic (tcp.port == 3389) and observe the immediate non-stop spam of traffic.</h2>
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>

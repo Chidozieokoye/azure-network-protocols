@@ -3,8 +3,7 @@
 </p>
 
 <h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
-This setup begins by creating a Virtual Network and a Subnet in Azure, followed by deploying two virtual machines—Windows 10 and Linux (Ubuntu)—within the same network to ensure they can communicate with each other. Using Wireshark on the Windows 10 VM, you filter and observe various network traffic types, such as ICMP when pinging the Ubuntu VM, SSH traffic when accessing the Ubuntu VM via private IP, DHCP traffic when issuing a new IP address through PowerShell, and DNS traffic when using nslookup to resolve domains like google.com and disney.com. You also configure a Network Security Group (NSG) to disable and enable ICMP traffic, observing its effects on network communication in Wireshark. Additionally, you filter RDP traffic to observe continuous connections on the Windows 10 VM. This setup provides hands-on experience with network traffic analysis, firewall configuration, and VM communication within a virtualized environment.<br />
-
+In this setup, I began by creating a Virtual Network and a Subnet in Azure, then deployed two virtual machines—Windows 10 and Linux (Ubuntu)—within the same network to ensure they could communicate with each other. Using Wireshark on the Windows 10 VM, I filtered and observed various types of network traffic. This included ICMP traffic when pinging the Ubuntu VM, SSH traffic when accessing the Ubuntu VM via its private IP, DHCP traffic when issuing a new IP address through PowerShell, and DNS traffic when using nslookup to resolve domains like google.com and disney.com. I also configured a Network Security Group (NSG) to disable and enable ICMP traffic and observed its effects on network communication in Wireshark. Additionally, I filtered RDP traffic to monitor continuous connections on the Windows 10 VM. This setup gave me hands-on experience with network traffic analysis, firewall configuration, and VM communication within a virtualized environment.<br />
 
 <h2>Video Demonstration</h2>
 
@@ -53,7 +52,7 @@ https://www.youtube.com/channel/UCjL4Qz0Mm7CG9trg-1v4lgQ
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-A Virtual Network (VNet) is created to establish a private networking environment in which virtual machines and other resources can communicate securely. Within this VNet, a Subnet is configured to segment the network, allowing efficient traffic management and security control. The subnet assigns IP addresses to the connected virtual machines and ensures they can communicate with each other while also being managed through network security rules. This setup forms the foundation for networking in the cloud, enabling virtual machines to interact while maintaining isolation from external networks unless explicitly configured.
+In this step, I created a Virtual Network (VNet) to establish a private networking environment where virtual machines and other resources can communicate securely. Within the VNet, I configured a Subnet to segment the network, allowing for efficient traffic management and enhanced security control. The subnet assigns IP addresses to the connected virtual machines, ensuring they can communicate with each other while also being managed through network security rules. This setup forms the foundation for cloud networking, enabling virtual machines to interact while maintaining isolation from external networks unless specifically configured otherwise.
 </p>
 <br />
 
@@ -62,7 +61,7 @@ A Virtual Network (VNet) is created to establish a private networking environmen
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-A Windows 10 and a Linux (Ubuntu) virtual machine are deployed and configured to connect to the same Virtual Network (VNet), ensuring they can communicate securely within a shared private network. By being in the same VNet, both VMs can exchange data without needing external internet access, allowing for seamless interaction, such as file transfers, remote connections, and network-based services. This setup is essential for testing, development, and learning environments where cross-platform connectivity and network traffic analysis are required
+In this step, I deployed a Windows 10 and a Linux (Ubuntu) virtual machine, configuring both to connect to the same Virtual Network (VNet). This ensures that the two VMs can communicate securely within a shared private network. By being in the same VNet, the VMs can exchange data without needing external internet access, allowing for seamless interaction like file transfers, remote connections, and network-based services. This setup is crucial for testing, development, and learning environments where cross-platform connectivity and network traffic analysis are necessary.
 </p>
 <br />
 
@@ -71,7 +70,7 @@ A Windows 10 and a Linux (Ubuntu) virtual machine are deployed and configured to
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-I log into the Windows 10 virtual machine, launch Wireshark, and apply a filter to specifically capture and analyze ICMP (Internet Control Message Protocol) traffic, which is used for network diagnostics, such as ping requests and replies. This allows me to monitor real-time network communication, observe how ICMP packets are transmitted and received, and troubleshoot connectivity issues between devices within the Virtual Network (VNet). By filtering ICMP traffic, i can isolate ping-related network activity and gain insights into how packets flow between the Windows 10 and Ubuntu virtual machines.
+In this step, I logged into the Windows 10 virtual machine, launched Wireshark, and applied a filter to specifically capture and analyze ICMP (Internet Control Message Protocol) traffic, which is used for network diagnostics like ping requests and replies. This allowed me to monitor real-time network communication, observe how ICMP packets are transmitted and received, and troubleshoot any connectivity issues between devices within the Virtual Network (VNet). By filtering ICMP traffic, I was able to isolate ping-related network activity and gain insights into how packets flow between the Windows 10 and Ubuntu virtual machines.
 </p>
 <br />
 
@@ -80,7 +79,7 @@ I log into the Windows 10 virtual machine, launch Wireshark, and apply a filter 
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-From the Windows 10 virtual machine, I open a command prompt and use the ping command to send ICMP echo requests to the Ubuntu VM's private IP address. Simultaneously, Wireshark is used to capture and analyze the network traffic, allowing me to observe the ICMP request and reply packets exchanged between the two machines. This process verifies that both VMs can communicate within the Virtual Network (VNet) and helps analyze the response time, packet flow, and potential network issues. It also provides insights into how ICMP traffic behaves in a controlled network environment.
+From the Windows 10 virtual machine, I opened a command prompt and used the ping command to send ICMP echo requests to the Ubuntu VM's private IP address. At the same time, I used Wireshark to capture and analyze the network traffic, allowing me to observe the ICMP request and reply packets exchanged between the two machines. This process verified that both VMs could communicate within the Virtual Network (VNet) and helped me analyze the response time, packet flow, and potential network issues. It also provided valuable insights into how ICMP traffic behaves in a controlled network environment.
 </p>
 <br />
 
@@ -89,7 +88,7 @@ From the Windows 10 virtual machine, I open a command prompt and use the ping co
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-From the Windows 10 virtual machine, I open PowerShell and use the ping command to send ICMP echo requests to a public website such as www.google.com. Meanwhile, Wireshark is running to capture and analyze the network traffic, allowing me to observe how the request is processed. This includes DNS resolution (translating the domain name into an IP address) and the ICMP request-reply exchanges between my VM and the public server. This step helps analyze how network traffic flows between a private virtual machine and an external internet destination, providing insights into latency, packet loss, and firewall behavior within the network.
+From the Windows 10 virtual machine, I opened PowerShell and used the ping command to send ICMP echo requests to a public website, such as www.google.com. At the same time, I had Wireshark running to capture and analyze the network traffic, allowing me to observe how the request was processed. This included DNS resolution (translating the domain name into an IP address) and the ICMP request-reply exchanges between my VM and the public server. This step helped me analyze how network traffic flows between a private virtual machine and an external internet destination, providing valuable insights into latency, packet loss, and firewall behavior within the network.
 </p>
 <br />
 
@@ -98,7 +97,7 @@ From the Windows 10 virtual machine, I open PowerShell and use the ping command 
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-In this step, i configure a Network Security Group (NSG) in Azure to control the flow of ICMP traffic by initially disabling it, preventing ping requests and replies from passing through the network. Afterward, i enable ICMP traffic again, allowing the communication to resume. While these changes are made, Wireshark is used to capture and analyze the network traffic, allowing you to observe how the ICMP packets are affected by the firewall settings. This process helps demonstrate the impact of firewall rules on network connectivity and shows how enabling or disabling specific traffic types like ICMP can control communication between virtual machines.
+In this step, I configured a Network Security Group (NSG) in Azure to control the flow of ICMP traffic by initially disabling it, preventing ping requests and replies from passing through the network. Afterward, I enabled ICMP traffic again, allowing the communication to resume. While making these changes, I used Wireshark to capture and analyze the network traffic, observing how the ICMP packets were affected by the firewall settings. This process helped demonstrate the impact of firewall rules on network connectivity and showed how enabling or disabling specific traffic types, like ICMP, can control communication between virtual machines.
 </p>
 <br />
 
@@ -107,7 +106,7 @@ In this step, i configure a Network Security Group (NSG) in Azure to control the
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-From the Windows 10 virtual machine, I use an SSH client to establish a secure connection to the Ubuntu VM by specifying its private IP address. As the connection is initiated, Wireshark is used to capture and analyze the network traffic, focusing on the SSH handshake and the encrypted communication between the two machines. This process allows me to observe the protocol in action, including the exchange of keys, authentication steps, and the establishment of a secure channel for remote management, all while monitoring the underlying network packets.
+From the Windows 10 virtual machine, I used an SSH client to establish a secure connection to the Ubuntu VM by specifying its private IP address. As the connection was initiated, I ran Wireshark to capture and analyze the network traffic, focusing on the SSH handshake and the encrypted communication between the two machines. This process allowed me to observe the protocol in action, including the exchange of keys, authentication steps, and the establishment of a secure channel for remote management, all while monitoring the underlying network packets.
 </p>
 <br />
 
@@ -116,7 +115,7 @@ From the Windows 10 virtual machine, I use an SSH client to establish a secure c
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-From the Windows 10 virtual machine, I use PowerShell to initiate a DHCP request to obtain a new IP address from the network’s DHCP server. Wireshark is used to capture and analyze the DHCP traffic, which includes the DHCP Discover, Offer, Request, and Acknowledge (DORA) process. This allows me to observe the communication between the VM and the DHCP server as the new IP address is assigned, including the exchange of DHCP packets that handle IP address allocation and configuration settings for the Windows 10 VM.
+From the Windows 10 virtual machine, I used PowerShell to initiate a DHCP request to obtain a new IP address from the network’s DHCP server. At the same time, I ran Wireshark to capture and analyze the DHCP traffic, including the DHCP Discover, Offer, Request, and Acknowledge (DORA) process. This allowed me to observe the communication between the VM and the DHCP server as the new IP address was assigned, including the exchange of DHCP packets that handled the IP address allocation and configuration settings for the Windows 10 VM.
 </p>
 <br />
 
@@ -125,7 +124,7 @@ From the Windows 10 virtual machine, I use PowerShell to initiate a DHCP request
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-From the Windows 10 virtual machine, I open PowerShell and use the nslookup command to query the DNS server for the IP addresses of google.com and disney.com. Wireshark is used to capture and analyze the DNS traffic generated during this process, which includes the DNS query sent by the Windows VM and the DNS response from the server containing the resolved IP addresses. This allows me to observe the DNS protocol in action, including the communication between the VM and the DNS server, and analyze the response times, packet details, and potential issues in the DNS resolution process.
+From the Windows 10 virtual machine, I opened PowerShell and used the nslookup command to query the DNS server for the IP addresses of google.com and disney.com. I ran Wireshark to capture and analyze the DNS traffic generated during this process, which included the DNS query sent by the Windows VM and the DNS response from the server containing the resolved IP addresses. This allowed me to observe the DNS protocol in action, including the communication between the VM and the DNS server, and analyze the response times, packet details, and potential issues in the DNS resolution process.
 </p>
 <br />
 
@@ -134,6 +133,6 @@ From the Windows 10 virtual machine, I open PowerShell and use the nslookup comm
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-From the Windows 10 virtual machine, I apply a Wireshark filter for RDP (Remote Desktop Protocol) traffic using tcp.port == 3389, which isolates the packets associated with RDP connections. This reveals a constant flow of traffic, which could include multiple connection attempts, session negotiations, or ongoing communication over the RDP protocol. By observing this traffic, I can analyze the behavior of RDP sessions, such as authentication attempts, the exchange of data between the client and server, and any potential issues like unauthorized access attempts or network performance concerns.
+From the Windows 10 virtual machine, I applied a Wireshark filter for RDP (Remote Desktop Protocol) traffic using `tcp.port == 3389`, which isolates the packets associated with RDP connections. This revealed a constant flow of traffic, including multiple connection attempts, session negotiations, or ongoing communication over the RDP protocol. By observing this traffic, I was able to analyze the behavior of RDP sessions, such as authentication attempts, the exchange of data between the client and server, and any potential issues like unauthorized access attempts or network performance concerns.
 </p>
 <br />
